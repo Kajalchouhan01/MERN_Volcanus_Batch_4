@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.instagram_clone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.side_bar {
+    height: 100vh;
+    width: 20%;
+    border-right: 1px solid gray;
+    padding: 10px;
+    /* background-color: brown; */
+}
+
+/* .side_bar .items h3{
+    font-family: "Great Vibes", cursive;
+} */
+
+.side_bar .items {
+    padding: 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 1.5rem;
+
+
+}
+
+.side_bar .items .material-symbols-outlined {
+    margin-right: 10px;
+}
+
+.post_section {
+    height: 100vh;
+    width: 55%;
+    /* background-color: tomato; */
+}
+
+.post_section .insta_story{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.post_section .insta_story .items{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.post_section .insta_story .items img{
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    border: 2px solid yellow;
+}
+
+.right_bar {
+    height: 100vh;
+    width: 23%;
+    /* background-color: chocolate; */
+}
