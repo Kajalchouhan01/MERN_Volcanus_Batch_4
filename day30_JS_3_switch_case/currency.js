@@ -1,4 +1,4 @@
-const pound = 103.8;
+ const pound = 103.8;
 const dollar = 83.47;
 const yen = 0.54;
 const euro = 88.89;
