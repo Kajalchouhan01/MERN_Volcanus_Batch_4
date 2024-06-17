@@ -1,34 +1,27 @@
-import Hero from "./components/Hero";
+import Person from "./components/Person";
 
 const App = () => {
-
-  const name = "superman"
-  let obj = {
-    course1:'React',
-    course2:'Angular',
-    course3:'Vue',
-  }
-  const hero = ["superman","spiderman","batman"]
-
   return (
     <>
-      <div>
-        <h1>We are learning React {name} </h1>
-        <ul>
-          <li>{obj.course1}</li>
-          <li>{obj.course2}</li>
-          <li>{obj.course3}</li>
-        </ul>
-        <ol>
-          <li>{hero[0]}</li>
-          <li>{hero[1]}</li>
-          <li>{hero[2]}</li>
-        </ol>
-      </div>
-      <Hero />
-      <div>
-        <h1>This is another h1</h1>
-      </div>
+      <Person
+        name="Infinity war"
+        imdb={9.8}
+        relase={2018}
+        actor="Doctor Strange"
+      />
+      <Person
+        name="The End Game"
+        imdb={10.8}
+        relase={2020}
+        actor="Thanos"
+      />
+      <Person
+        name="Avengers"
+        imdb={9.8}
+        relase={2012}
+        actor="Loki"
+      />
+    
     </>
   );
 };
