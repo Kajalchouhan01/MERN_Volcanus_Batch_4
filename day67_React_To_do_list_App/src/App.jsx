@@ -8,10 +8,14 @@ const App = () => {
     { id: 2, title: "Spiderman", description: "WonderFull Hero 2" },
   ]);
 
+  const deleteItem = (id) => {
+    setData(data.filter((e) => e.id != id));
+  };
+
   return (
     <>
-      <Form />
-      <ShowData data={data} />
+      <Form setData={setData} data={data} />
+      <ShowData data={data} deleteItem={deleteItem} />
     </>
   );
 };
