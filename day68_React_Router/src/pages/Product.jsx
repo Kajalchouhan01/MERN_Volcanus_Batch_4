@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { arr } from "../data";
+
 const Product = () => {
-  
+  const navigate = useNavigate();
+
   return (
     <div
       style={{
@@ -11,6 +13,10 @@ const Product = () => {
         margin: "auto",
       }}
     >
+      <button onClick={() => navigate("/career")}>
+        Navigate To Career Page
+      </button>
+
       {arr.map((data) => (
         <Link
           to={`/product/${data.id}`}
