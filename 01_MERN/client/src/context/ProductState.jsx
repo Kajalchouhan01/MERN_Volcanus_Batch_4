@@ -6,6 +6,7 @@ const ProductState = (props) => {
   const url = "http://localhost:1000/api";
 
   const [Products, setProducts] = useState([]);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     const fetchDataFromAPI = async () => {
@@ -14,7 +15,7 @@ const ProductState = (props) => {
       setProducts(api.data.product);
     };
     fetchDataFromAPI();
-  }, []);
+  }, [reload]);
 
   let data = 10;
 
@@ -23,14 +24,45 @@ const ProductState = (props) => {
   // user login
 
   // add product
+  const addProduct = async (title, description, price, qty, img) => {
+    const api = await axios.post(
+      `${url}/products/add`,
+      {
+        title,
+        description,
+        price,
+        qty,
+        img,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    setReload(!reload);
+    // console.log("adding product ... ", api);
+    return api.data;
+  };
 
   // delete product by id
+  const deleteProduct = async (id) => {
+    const api = await axios.delete(`${url}/products/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    setReload(!reload);
+    // console.log("adding product ... ", api);
+    return api.data;
+  };
 
   // edit product by id
 
-  
   return (
-    <ProductContext.Provider value={{ data, Products }}>
+    <ProductContext.Provider
+      value={{ data, Products, addProduct, deleteProduct }}
+    >
       {props.children}
     </ProductContext.Provider>
   );

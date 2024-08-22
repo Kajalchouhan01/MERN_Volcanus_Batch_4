@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Product = () => {
   const { data, Products } = useContext(ProductContext);
+  console.log("first")
   return (
     <div
       style={{

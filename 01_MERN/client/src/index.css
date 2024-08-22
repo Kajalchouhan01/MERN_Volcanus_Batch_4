@@ -25,5 +25,5 @@ body::-webkit-scrollbar {
 
 input{
   background-color: black !important;
-  color: white;
+  color: white !important;
 }
