@@ -6,10 +6,12 @@ const Navbar = () => {
     <div className="nav">
       <div className="nav_bar">
         <div className="left">
-          <Link to={"/"}>Shopping Cart</Link>
+          <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
+            <h3>Shopping Cart</h3>
+          </Link>
         </div>
         <div className="right">
-          <Link to={"/add"} className="btn btn-primary mx-2">
+          <Link to={"/addproduct"} className="btn btn-primary mx-2">
             Add Product
           </Link>
           <Link to={"/login"} className="btn btn-secondary mx-2">

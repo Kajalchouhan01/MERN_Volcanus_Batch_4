@@ -22,9 +22,12 @@ app.use("/api/products", productRouter);
 // C = Controllers - (functions)
 
 mongoose
-  .connect("mongodb://localhost:27017", {
-    dbName: "Volcanus_Batch_4_4pm",
-  })
+  .connect(
+    "mongodb+srv://sumanmalakar2022:5albIa4990YThPOg@cluster0.ddicszz.mongodb.net/",
+    {
+      dbName: "Volcanus_Batch_4_4pm",
+    }
+  )
   .then(() => console.log("MongoDB Connected Successfully"))
   .catch(() => console.log("Internal server error"));
 

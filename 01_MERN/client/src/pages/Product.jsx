@@ -1,6 +1,7 @@
 import React from "react";
 import ProductContext from "../context/ProductContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const Product = () => {
   const { data, Products } = useContext(ProductContext);
@@ -13,7 +14,7 @@ const Product = () => {
         flexWrap: "wrap",
         gap: "2rem",
         textAlign: "center",
-        marginTop:'15px'
+        marginTop: "15px",
       }}
     >
       {Products.map((data) => (
@@ -21,7 +22,7 @@ const Product = () => {
           key={data._id}
           style={{ maxWidth: "260px", height: "350px", padding: "10px" }}
         >
-          <div>
+          <Link to={`/product/${data._id}`}>
             <img
               src={data.img}
               alt=""
@@ -32,7 +33,7 @@ const Product = () => {
                 border: "2px solid blue",
               }}
             />
-          </div>
+          </Link>
           <div className="m-2">
             <h5>{data.title}</h5>
             <p>{data.price} ₹</p>

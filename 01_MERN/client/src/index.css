@@ -22,3 +22,8 @@ body::-webkit-scrollbar {
   border-bottom: 1px solid rgb(206, 137, 9);
 
 }
+
+input{
+  background-color: black !important;
+  color: white;
+}

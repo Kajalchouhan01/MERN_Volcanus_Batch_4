@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary bg-dark">
-        <div className="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+      <footer className="bd-footer py-4 py-md-5 mt-5  bg-dark text-light">
+        <div className="container py-4 py-md-5 px-4 px-md-3 text-light bg-dark">
           <div className="row">
             <div className="col-lg-3 mb-3">
               <a
@@ -221,6 +221,6 @@ const Footer = () => {
       </footer>
     </div>
   );
-}
+};
 
-export default Footer
+export default Footer;
