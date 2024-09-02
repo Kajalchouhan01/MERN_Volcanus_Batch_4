@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductContext from "../context/ProductContext";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
-const AddProduct = () => {
-  const { addProduct } = useContext(ProductContext);
+const EditProduct = () => {
+  const { url, reload, setReload } = useContext(ProductContext);
+
+  const { id } = useParams();
 
   const navigate = useNavigate();
 
@@ -16,6 +19,25 @@ const AddProduct = () => {
     img: "",
   });
 
+  useEffect(() => {
+    const fetchDataFromAPI = async () => {
+      const api = await axios.get(`${url}/products/${id}`);
+      console.log("products  = ", api.data.product);
+      let product = api.data.product[0];
+      if (product) {
+        setFormData({
+          title: product.title,
+          description: product.description,
+          price: product.price,
+          qty: product.qty,
+          img: product.img,
+        });
+      }
+    };
+
+    fetchDataFromAPI();
+  }, [id, url]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -23,10 +45,31 @@ const AddProduct = () => {
 
   const { title, description, price, qty, img } = formData;
 
+  const editProduct = async (title, description, price, qty, img) => {
+    const api = await axios.put(
+      `${url}/products/${id}`,
+      {
+        title,
+        description,
+        price,
+        qty,
+        img,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    setReload(!reload);
+    // console.log("adding product ... ", api);
+    return api.data;
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
     // console.log("your form has been submitted ...", formData);
-    const result = await addProduct(title, description, price, qty, img);
+    const result = await editProduct(title, description, price, qty, img);
 
     alert(result.message);
     if (result.success) {
@@ -38,7 +81,7 @@ const AddProduct = () => {
         img: "",
       });
 
-      navigate("/");
+      navigate("/admin");
     }
   };
 
@@ -119,20 +162,11 @@ const AddProduct = () => {
           </select>
         </div> */}
         <div className="d-grid col-6 mx-auto">
-          <button className="btn btn-outline-warning ">Add Product</button>
+          <button className="btn btn-outline-warning ">Edit Product</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default AddProduct;
-
-
-const sum = (a,b,c) =>{
-  console.log(a+b+c)
-
-}
-
-// // sum(10,20,30) = 60
-// sum(10,'20',30) = 4020
+export default EditProduct;

@@ -3,15 +3,23 @@ import mongoose from "mongoose";
 import bodyParse from "express";
 import cors from 'cors'
 import productRouter from "./routes/product.js";
+import userRouter from './routes/user.js'
+import { config } from "dotenv";
 
 const app = express();
 app.use(bodyParse.json());
+
+// .env setup
+config({ path: ".env" }); 
 
 app.use(cors({
   origin:true,
   methods:["GET","POST","DELETE","PUT"],
   credentials:true
 }))
+
+// userRouter
+app.use('/api/user',userRouter);
 
 // productRouter
 app.use("/api/products", productRouter);
@@ -22,12 +30,9 @@ app.use("/api/products", productRouter);
 // C = Controllers - (functions)
 
 mongoose
-  .connect(
-    "mongodb+srv://sumanmalakar2022:5albIa4990YThPOg@cluster0.ddicszz.mongodb.net/",
-    {
-      dbName: "Volcanus_Batch_4_4pm",
-    }
-  )
+  .connect(process.env.Mongo_Url, {
+    dbName: "Volcanus_Batch_4_4pm",
+  })
   .then(() => console.log("MongoDB Connected Successfully"))
   .catch(() => console.log("Internal server error"));
 

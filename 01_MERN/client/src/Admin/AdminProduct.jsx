@@ -21,7 +21,6 @@ const AdminProduct = () => {
           style={{
             padding: "10px",
             margin: "10px",
-
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -48,7 +47,7 @@ const AdminProduct = () => {
             </div>
           </div>
           <div>
-            <button className="btn btn-warning mx-3">Edit</button>
+            <Link to={`/admin/edit/${data._id}`} className="btn btn-warning mx-3">Edit</Link>
             <button
               onClick={async () => {
                 if (confirm("Are you are want to deleted")) {
